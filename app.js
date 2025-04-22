@@ -26,7 +26,7 @@ app.post("/criarUsuario", (req, res) => {
   };
   usuarios.push(novoUsuario);
 
-  res.send(usuarios);
+  res.status(201).send(usuarios)
 });
 
 app.put("/usuario/:id", (req, res) => {
@@ -59,8 +59,12 @@ app.delete("/usuario/:id", (req, res) => {
 
   usuarios.splice(index, 1);
 
-  res.send(usuarios);
+  res.json()
+
 });
+app.get("/usuarios",(req, res)=>{
+  res.json(usuarios);
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
